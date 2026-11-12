@@ -1,15 +1,13 @@
-<div align="center">
+# Abhinav Rastogi
 
-# The Midnight Observatory
+Founding engineer at [Neander](https://neander.ai). We’re building a harness for coding agents.
 
-**Abhinav Rastogi · Founding engineer at Neander**
+## The Midnight Observatory
 
-<a href="./rooms/foyer.md"><img src="./art/observatory.gif" width="850" alt="A pixel-art haunted observatory under a blue moon. The amber front door is open. Enter the observatory."></a>
+**[🚪 Play the Midnight Observatory](https://abhinav-neander.github.io/abhinav-neander/)**
 
-**[🚪 Open the front door](./rooms/foyer.md)**
+Explore the haunted observatory, collect three seals, and open the vault. The rooms include my public projects, a snapshot of GitHub activity, and a Git riddle.
 
-[🔧 Garage](./rooms/garage.md) · [🔭 Tower](./rooms/tower.md) · [⛏️ Mine](./rooms/mine.md) · [🪦 Graveyard](./rooms/graveyard.md)
+[Public repositories](https://github.com/abhinav-neander?tab=repositories) · [Tour source](https://github.com/abhinav-neander/abhinav-neander/tree/main/docs)
 
-</div>
-
-A tiny point-and-click tour of my GitHub, made with linked Markdown and animated art. Inspired by [Tropical Bee’s haunted profile](https://github.com/tropicalbee).
+Inspired by [Tropical Bee’s haunted profile](https://github.com/tropicalbee).

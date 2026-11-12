@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Midnight Observatory · Abhinav Rastogi</title>
+<link rel="stylesheet" href="style.css">
+<script src="tour.js" defer></script>
+</head>
+<body>
+<main class="shell">
+  <header>
+    <a href="https://github.com/abhinav-neander">← GitHub profile</a>
+    <span class="meter" id="meter">0 / 3 seals</span>
+  </header>
+  <section class="scene" aria-label="Observatory grounds">
+    <img src="art/observatory.gif" alt="Moonlit observatory with a garage, a tower and a graveyard">
+    <div class="title"><h1>The Midnight<br>Observatory</h1><p>Abhinav Rastogi · Founding engineer at Neander</p></div>
+    <button class="spot garage" data-room="garage">Garage</button>
+    <button class="spot tower" data-room="tower">Tower</button>
+    <button class="spot door" data-room="foyer">Front door</button>
+    <button class="spot mine" data-room="mine">Mine</button>
+    <button class="spot graveyard" data-room="graveyard">Graveyard</button>
+  </section>
+  <nav aria-label="Rooms">
+    <button data-room="foyer">Foyer</button><button data-room="garage">Garage</button>
+    <button data-room="tower">Tower</button><button data-room="mine">Mine</button>
+    <button data-room="graveyard">Graveyard</button>
+  </nav>
+  <section id="room" class="room" aria-labelledby="room-title" hidden></section>
+  <p id="notice" role="status" class="notice">Explore the rooms. Find three seals to open the vault.</p>
+  <footer>Inspired by <a href="https://github.com/tropicalbee">Tropical Bee’s haunted profile</a></footer>
+</main>
+<template id="foyer">
+  <h2 id="room-title" tabindex="-1">The foyer</h2>
+  <p>Someone scratched three symbols into the vault door. The garage, tower and mine each hide one.</p>
+  <button id="vault" data-action="vault">Try the vault</button>
+</template>
+<template id="garage">
+  <h2 id="room-title" tabindex="-1">The garage</h2>
+  <p>Every drawer says “misc.” One of them is humming.</p>
+  <button data-action="garage">Open the humming drawer</button>
+  <ul><li><a href="https://github.com/abhinav-neander/inventory_management">Inventory management</a></li>
+  <li><a href="https://github.com/abhinav-neander/obsidian-llm-wiki">Obsidian LLM Wiki fork</a></li>
+  <li><a href="https://github.com/abhinav-neander/carapace-bin">Carapace fork</a></li></ul>
+</template>
+<template id="tower">
+  <h2 id="room-title" tabindex="-1">The tower</h2>
+  <p>Rotate the telescope until it finds the blue moon.</p>
+  <p id="sight" class="sight">Sightline · rooftops</p>
+  <button data-action="tower">Rotate telescope</button>
+</template>
+<template id="mine">
+  <h2 id="room-title" tabindex="-1">The contribution mine</h2>
+  <p>The lantern is out. Light it to see a dated snapshot of public GitHub events.</p>
+  <button data-action="mine">Light the lantern</button>
+  <div id="mine-chart" hidden><img src="art/mine.gif" alt="35-day public activity snapshot, October 9 to November 12, 2026. Three public events shown."></div>
+</template>
+<template id="graveyard">
+  <h2 id="room-title" tabindex="-1">The graveyard</h2>
+  <p>“I hold uncommitted changes. I can pop without making a sound. What am I?”</p>
+  <div class="choices"><button data-action="wrong">A branch</button><button data-action="stash">A stash</button><button data-action="wrong">A tag</button></div>
+</template>
+<template id="opened">
+  <h2 id="room-title" tabindex="-1">The vault is open</h2>
+  <p>You found the workshop log. It reads: “If the house is quiet, check the build logs.”</p>
+  <a href="https://github.com/abhinav-neander?tab=repositories">Explore the public repositories →</a>
+  <button data-action="reset">Play again</button>
+</template>
+</body>
+</html>

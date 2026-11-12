@@ -1,0 +1,28 @@
+*{box-sizing:border-box}
+:root{color-scheme:dark;background:#100c1c;color:#f8f1ff;font:16px system-ui,sans-serif}
+body{margin:0}
+.shell{width:min(1040px,100% - 32px);margin:16px auto 26px}
+header,footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;color:#d4bde8;font-size:.9rem}
+footer{justify-content:flex-start}
+a{color:#91f1de;text-underline-offset:3px}
+.meter{background:#392350;border:1px solid #8552ad;border-radius:999px;padding:6px 13px;color:#f5d9ff;font-weight:800}
+.scene{position:relative;isolation:isolate;overflow:hidden;border:1px solid #6a4a90;border-radius:16px;background:#211438;aspect-ratio:2.13}
+.scene img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 54%}
+.title{position:absolute;left:24px;top:20px;text-shadow:0 2px 6px #10051a;background:#170d28ed;padding:14px 18px;border-radius:12px}
+h1{font:700 clamp(1.5rem,4vw,3.2rem)/.96 Georgia,serif;margin:0;color:#fff2ff;letter-spacing:-.035em}
+.title p{font-size:.78rem;margin:8px 0 0;color:#f0c9ff}
+button{font:inherit;color:#fdf5ff;background:#34224c;border:1px solid #9b70bc;border-radius:8px;padding:8px 13px;min-height:40px;cursor:pointer}
+button:hover,button[aria-current=true]{background:#5d347a}
+button:focus-visible,a:focus-visible{outline:3px solid #9bfbe4;outline-offset:3px}
+.spot{position:absolute;transform:translate(-50%,-50%);background:#171025f5;border-color:#f9b481;font-size:.88rem;font-weight:800;box-shadow:0 0 0 3px #2b1930c0}
+.spot:hover{background:#70406c}
+.garage{left:34%;top:66%}.tower{left:77%;top:31%}.door{left:57%;top:68%;color:#ffdfaa}.mine{left:76%;top:79%}.graveyard{left:17%;top:83%}
+nav{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+nav button{min-height:35px;padding:6px 12px}
+.room{padding:14px 18px;background:#201630;border:1px solid #6a4a90;border-radius:12px}
+.room h2{margin:0 0 6px;font:700 1.6rem Georgia,serif;color:#ffc58c}
+.room p{margin:6px 0 11px}.room ul{margin:8px 0 0;padding-left:20px}.room img{display:block;width:min(100%,650px);margin-top:12px}
+.choices{display:flex;gap:8px;flex-wrap:wrap}
+.notice{min-height:1.5em;color:#ffdcab;margin:9px 0;font-weight:700}
+.sight{color:#9bfbe4;font-family:monospace}.room a+button{margin-left:12px}
+@media(max-width:600px){.scene{aspect-ratio:1.3}.scene img{object-fit:fill}.title{top:8px;left:8px;padding:8px}.title p{max-width:155px}.spot{font-size:.72rem;min-height:33px;padding:3px 5px}.mine{left:74%;top:83%}.graveyard{left:18%;top:83%}.shell{width:calc(100% - 20px)}}
