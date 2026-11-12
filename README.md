@@ -8,7 +8,7 @@ Founding engineer at [Neander](https://neander.ai). We’re building a harness f
 
 **[🚪 Open the front door](https://abhinav-neander.github.io/abhinav-neander/?enter=1)**
 
-Walk into a 3D gallery of my public projects and contributions. Every exhibit opens its GitHub repository, pull request, or commit.
+Walk into a 3D gallery of my public projects and contributions. Scroll over the room to turn around. Every exhibit opens its GitHub repository, pull request, or commit.
 
 [Public repositories](https://github.com/abhinav-neander?tab=repositories) · [Gallery source](https://github.com/abhinav-neander/abhinav-neander/tree/main/docs)
 

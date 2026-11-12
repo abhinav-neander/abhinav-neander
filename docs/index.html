@@ -35,18 +35,20 @@
         <button type="button" data-filter="contribution" aria-pressed="false">Contributions</button>
       </div>
       <div class="views" role="group" aria-label="Gallery viewing angle">
-        <button type="button" data-angle="-13" aria-label="Look left">←</button>
-        <button type="button" data-angle="0" aria-label="Look straight ahead">↑</button>
-        <button type="button" data-angle="13" aria-label="Look right">→</button>
+        <button type="button" data-turn="-90" aria-label="Look left">←</button>
+        <button type="button" data-turn="0" aria-label="Look straight ahead">↑</button>
+        <button type="button" data-turn="90" aria-label="Look right">→</button>
       </div>
     </div>
     <p id="results" role="status"></p>
-    <div class="stage">
+    <p class="guide" id="look-guide">Scroll over the room to look around. Swipe on a phone, or use the arrow keys.</p>
+    <div class="stage" tabindex="0" role="region" aria-label="360-degree observatory interior" aria-describedby="look-guide">
       <div class="room">
-        <div class="back-wall" aria-hidden="true"></div>
         <div class="floor" aria-hidden="true"></div>
-        <ul id="exhibits" class="exhibits"></ul>
+        <div class="ceiling" aria-hidden="true"></div>
+        <div id="walls"></div>
       </div>
+      <div id="compass" class="compass" aria-hidden="true"></div>
     </div>
     <p class="footnote"><a href="https://github.com/abhinav-neander#contribution-graph">Full GitHub contribution graph ↗</a></p>
   </section>
