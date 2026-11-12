@@ -1,83 +1,77 @@
 'use strict';
 
-const room = document.querySelector('#room');
-const notice = document.querySelector('#notice');
-const meter = document.querySelector('#meter');
-const seals = new Set();
-let telescope = 0;
-const sights = ['rooftops', 'cloud bank', 'blue moon'];
+const entrance = document.querySelector('#entrance');
+const gallery = document.querySelector('#gallery');
+const door = document.querySelector('#door');
+const room = document.querySelector('.room');
+const exhibits = document.querySelector('#exhibits');
+const filters = document.querySelectorAll('[data-filter]');
 
-function enter(name) {
-  const template = document.getElementById(name);
-  room.replaceChildren(template.content.cloneNode(true));
-  room.hidden = false;
-  for (const button of document.querySelectorAll('nav [data-room]')) {
-    button.setAttribute('aria-current', String(button.dataset.room === name));
-  }
-  if (name === 'tower') {
-    room.querySelector('#sight').textContent = 'Sightline · ' + sights[telescope];
-  }
-  if (name === 'mine' && seals.has('mine')) {
-    room.querySelector('#mine-chart').hidden = false;
-  }
-  room.querySelector('h2').focus({preventScroll:true});
-  room.scrollIntoView({block:'nearest'});
-}
-
-function collect(seal, message) {
-  const alreadyFound = seals.has(seal);
-  seals.add(seal);
-  meter.textContent = seals.size + ' / 3 seals';
-  notice.textContent = alreadyFound ? 'You already have this seal.' : message;
-  if (!alreadyFound && seals.size === 3) {
-    notice.textContent += ' The foyer vault is ready to open.';
-  }
-}
-
-const actions = {
-  garage() {
-    collect('garage', 'You found the brass seal in the drawer.');
-  },
-  tower() {
-    telescope = (telescope + 1) % sights.length;
-    room.querySelector('#sight').textContent = 'Sightline · ' + sights[telescope];
-    if (telescope === 2) collect('tower', 'The blue moon revealed the silver seal.');
-    else notice.textContent = 'Keep turning. The moon is close.';
-  },
-  mine() {
-    room.querySelector('#mine-chart').hidden = false;
-    collect('mine', 'The lantern revealed the amber seal.');
-  },
-  wrong() {
-    notice.textContent = 'The headstone stays quiet. Try another answer.';
-  },
-  stash() {
-    notice.textContent = 'Correct. Even ghosts use git stash.';
-  },
-  vault() {
-    if (seals.size < 3) {
-      notice.textContent = 'The vault is locked. Collect the three seals first.';
-      return;
+function render(filter) {
+  const visible = galleryItems.filter(item => filter === 'all' || item.category === filter);
+  exhibits.replaceChildren(...visible.map(item => {
+    const entry = document.createElement('li');
+    const link = document.createElement('a');
+    link.className = 'exhibit ' + item.category;
+    link.href = item.url;
+    for (const [tag, value, className] of [
+      ['span', item.label + ' ↗', 'kind'],
+      ['strong', item.title, ''],
+      ['small', item.detail, '']
+    ]) {
+      const element = document.createElement(tag);
+      element.className = className;
+      element.textContent = value;
+      link.append(element);
     }
-    enter('opened');
-    notice.textContent = 'You opened the vault.';
-  },
-  reset() {
-    seals.clear();
-    telescope = 0;
-    meter.textContent = '0 / 3 seals';
-    notice.textContent = 'Explore the rooms. Find three seals to open the vault.';
-    enter('foyer');
+    entry.append(link);
+    return entry;
+  }));
+  document.querySelector('#results').textContent = visible.length + ' exhibits';
+  for (const button of filters) {
+    button.setAttribute('aria-pressed', String(button.dataset.filter === filter));
   }
-};
+}
 
-document.addEventListener('click', event => {
-  const button = event.target.closest('button');
-  if (!button) return;
-  if (button.dataset.room) {
-    enter(button.dataset.room);
-  } else if (button.dataset.action) {
-    actions[button.dataset.action]();
-    notice.scrollIntoView({block:'nearest'});
-  }
+function showGallery() {
+  entrance.hidden = true;
+  gallery.hidden = false;
+  document.querySelector('#gallery-title').focus();
+}
+
+function openDoor() {
+  if (door.disabled) return;
+  door.disabled = true;
+  entrance.classList.add('entering');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) showGallery();
+  else setTimeout(showGallery, 1650);
+}
+
+door.addEventListener('click', openDoor);
+
+document.querySelector('#back').addEventListener('click', () => {
+  gallery.hidden = true;
+  entrance.classList.remove('entering');
+  entrance.hidden = false;
+  door.disabled = false;
+  door.focus();
 });
+
+for (const button of filters) {
+  button.addEventListener('click', () => render(button.dataset.filter));
+}
+for (const button of document.querySelectorAll('[data-angle]')) {
+  button.addEventListener('click', () => room.style.setProperty('--angle', button.dataset.angle + 'deg'));
+}
+
+render('all');
+
+if (new URLSearchParams(location.search).get('enter') === '1') {
+  const art = entrance.querySelector('img');
+  const start = () => setTimeout(openDoor, 500);
+  if (art.complete) start();
+  else {
+    art.addEventListener('load', start, { once: true });
+    art.addEventListener('error', start, { once: true });
+  }
+}

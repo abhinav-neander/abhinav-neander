@@ -4,10 +4,12 @@ Founding engineer at [Neander](https://neander.ai). We’re building a harness f
 
 ## The Midnight Observatory
 
-**[🚪 Play the Midnight Observatory](https://abhinav-neander.github.io/abhinav-neander/)**
+<a href="https://abhinav-neander.github.io/abhinav-neander/?enter=1"><img src="./art/observatory.gif" width="520" alt="Enter the moonlit observatory and explore my GitHub work"></a>
 
-Explore the haunted observatory, collect three seals, and open the vault. The rooms include my public projects, a snapshot of GitHub activity, and a Git riddle.
+**[🚪 Open the front door](https://abhinav-neander.github.io/abhinav-neander/?enter=1)**
 
-[Public repositories](https://github.com/abhinav-neander?tab=repositories) · [Tour source](https://github.com/abhinav-neander/abhinav-neander/tree/main/docs)
+Walk into a 3D gallery of my public projects and contributions. Every exhibit opens its GitHub repository, pull request, or commit.
+
+[Public repositories](https://github.com/abhinav-neander?tab=repositories) · [Gallery source](https://github.com/abhinav-neander/abhinav-neander/tree/main/docs)
 
 Inspired by [Tropical Bee’s haunted profile](https://github.com/tropicalbee).
